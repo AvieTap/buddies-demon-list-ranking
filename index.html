@@ -1,0 +1,2025 @@
+<!-- 
+For every update: 
+// 1. Section + reordering names, change s#
+// 2. Nav reordering, change s#
+// 3. Add showComment(comment index #, player index #) (if applicable)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking the Buddies List - Spreadsheet</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.phototourl.com/free/2026-08-12-eaf95da4-ffde-47bf-9dbd-5fe8ed0a4349.png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+</head>
+<body>
+    
+    <div id="container">
+        <div id="header" onclick="toggleOff()">
+            <div></div>
+            <div id="header-left">
+                <img src="https://cdn.phototourl.com/free/2026-08-12-eaf95da4-ffde-47bf-9dbd-5fe8ed0a4349.png" title="Rounded version of the current logo for The Buddies">
+            </div>
+            <div id="header-right">
+                <!-- <h1 class="highest">SAND TAKEOVER</h1> -->
+                <h1>THE BUDDIES RANK BUDDIES DEMON LIST</h1>
+                <a class="miscLinks" href="https://docs.google.com/spreadsheets/d/1uSgao2gjEs8Rs8yo-cyIlAW7_fx4LYmqAp3soh4mGdY/edit?gid=0#gid=0" target="_blank" title="Don't worry, all URLs open in a separate tab!">Original spreadsheet data by JinoBeats, BoomBlox, Zivy, Zephyrora, pime2005, <br> Twister, Extrav, leapin and aero</a> <a class="miscLinks" href="https://sites.google.com/view/thebuddiesdemonlist" target="_blank" title="Don't worry, all URLs open in a separate tab!">(and videos sourced from the BDL site)</a>
+                <br>
+                <h5>Coded by AvieQuaverie (dm me on Discord for bug reports) :D</h5>
+                <h6><i>Last updated: Aug 14</i></h6>
+            </div>
+            <div></div>
+        </div>
+
+        <!-- Colour legends/guides -->
+        <div id="legend-button" onclick="toggleLegend()"><b>Legend: </b><span id="legend-text">Hidden</span></div>
+        <a id="top-button" href="#top"><b>Back to Top!</b></a>
+        
+        <div id="legend">
+            <table>
+                <tr>
+                    <th class="blank">Unfilled: Doesn't count toward avg.</th>
+                    <th class="comment comment-unrated">Comment <br> (without any other bg colour)</th>
+                    <th class="s0">Void: <br> Cannot rank your own demon</th>
+                    <th class="rate-0">0 out of 10*</th>
+                    <th class="blank lowest">[Lowest] score</th>
+                    <th class="blank highest">[Highest] score <br> (Or an iconic level)</th>
+                    <th class="rate-10">10 out of 10*</th>
+                </tr>  
+                <tr><th colspan="7"></th></tr>
+                <tr>
+                    <th class="blank" colspan="3">*Extrav has a slightly altered colour legend, in addition to the universal lowest/highest text colours:</th>
+                    <th class="rate-1">1 out of 10</th>
+                    <th class="rate-0">1.5 out of 10</th>
+                    <th class="rate-9-point-5">9 out of 10</th>
+                    <th class="rate-10">9.5 out of 10</th>
+                </tr>               
+            </table>
+        </div>
+
+        <!-- Div for the tooltip that displays comments-->
+        <div id="tooltip">
+            <p id="tooltip-text"></p>
+        </div>
+
+        <!-- Sidebar with links to fast travel for every level -->
+        <div id="nav">
+            <table>
+                <tr>
+                    <td class="s0" colspan="5"><b><a href="#main-list">Main List (L to R)</a></b></td>
+                </tr>
+                <tr>
+                    <td class="s1"><a href="">Super <br> Sandcastle</a></td>
+                    <td class="s2"><a href="">Vegetable Oil</a></td>
+                    <td class="s2"><a href="">Xronier</a></td>
+                    <td class="s2"><a href="">Supreme <br> Demon Mix</a></td>
+                    <td class="s2"><a href="">Fusion <br> Dynamix</a></td>
+                </tr>
+                <tr>
+                    <td class="s3"><a href="">Prisma</a></td>
+                    <td class="s3"><a href="">LockOut</td>
+                    <td class="s3"><a href="">Cryothorn Hell</a></td>
+                    <td class="s3"><a href="">Turbulent Valley</a></td>
+                    <td class="s3"><a href="">Polyatomic</a></td>
+                </tr>
+                <tr>
+                    <td class="s4"><a href="">Vacancy</a></td>
+                    <td class="s4"><a href="">Plant Wave Infinity</td>
+                    <td class="s4"><a href="">Interstellar</a></td>
+                    <td class="s4"><a href="">HYPOTHERMIA</a></td>
+                    <td class="s4"><a href="">Motorbreath</a></td>
+                </tr>
+                <tr>
+                    <td class="s4"><a href="">GrizzlyWare</a></td>
+                    <td class="s4"><a href="">Malevolent</td>
+                    <td class="s4"><a href="">Manic Machine</a></td>
+                    <td class="s4"><a href="">Warning</a></td>
+                    <td class="s4"><a href="">Neon Mixtape Tour</a></td>
+                </tr>
+                <tr>
+                    <td class="s4"><a href="">Zen Blast</a></td>
+                    <td class="s4"><a href="">PAINFUL PLAYLAND</td>
+                    <td class="s4"><a href="">Quadratic Function</a></td>
+                    <td class="s4"><a href="">Rippling Memories</a></td>
+                    <td class="s4"><a href="">SwagSonic</a></td>
+                </tr>
+                <tr>
+                    <td class="s4"><a href="">REVITALIZE</a></td>
+                    <td class="s4"><a href="">Midnight March</td>
+                    <td class="s4"><a href="">The Solar Winds</a></td>
+                    <td class="s4"><a href="">Trobos</a></td>
+                    <td class="s4"><a href="">Eggplantlust</a></td>
+                </tr>
+                <tr>
+                    <td class="s4"><a href="">Dreamfully</a></td>
+                    <td class="s4"><a href="">SupremE</td>
+                    <td class="s4"><a href="">MOBL III</a></td>
+                    <td class="s4"><a href="">MOBL II</a></td>
+                    <td class="s4"><a href="">Liam Tripple Redux</a></td>
+                </tr>
+                <tr>
+                    <td class="s4"><a href="">MOBL</a></td>
+                    <td class="s4"><a href="">Precipitance</a></td>
+                    <td class="s5"><a href="">Critical Error II</a></td>
+                    <td class="s5"><a href="">Discoloured Praise</a></td>
+                    <td class="s5"><a href="">Sheol Death</a></td>
+                </tr>
+                <tr>
+                    <td class="s5"><a href="">Eggplant Ideology</a></td>
+                    <td class="s5"><a href="">YMTHLYFYM <br> BIKWHRLYF</a></td>
+                    <td class="s5"><a href="">Betrayal of Fortuity</a></td>
+                    <td class="s5"><a href="">Corrode</a></td>
+                    <td class="s5"><a href="">Demon Collection</a></td>
+                </tr>
+                <tr>
+                    <td class="s5"><a href="">Quantum Map</a></td>
+                    <td class="s5"><a href="">Just a Dream</a></td>
+                    <td class="s5"><a href="">Cyclotron</a></td>
+                    <td class="s5"><a href="">Dark Realm</a></td>
+                    <td class="s5"><a href="">Fractal Reality</a></td>
+                </tr>
+                <tr>
+                    <td class="s0" colspan="5"><b><a href="#extended-list">Extended List</a></b></td>
+                </tr>
+                <tr>
+                    <td class="s5"><a href="">Cerulean Shimmer</a></td>
+                    <td class="s5"><a href="">The Truth</a></td>
+                    <td class="s5"><a href="">Power Hour</a></td>
+                    <td class="s5"><a href="">Sodium</a></td>
+                    <td class="s5"><a href="">SupremacY</a></td>
+                </tr>
+                <tr>
+                    <td class="s5"><a href="">Eggplantos</a></td>
+                    <td class="s5"><a href="">Fluorine</a></td>
+                    <td class="s5"><a href="">Neon</a></td>
+                    <td class="s5"><a href="">Nitrogen</a></td>
+                    <td class="s5"><a href="">Oxygen</a></td>
+                </tr>
+                <tr>
+                    <td class="s5"><a href="">Eggplant Corridor</a></td>
+                    <td class="s5"><a href="">Beryllium</a></td>
+                    <td class="s5"><a href="">Fermion</a></td>
+                    <td class="s5"><a href="">Carbon</a></td>
+                    <td class="s5"><a href="">Inevitable Violence</a></td>
+                </tr>
+                <tr>
+                    <td class="s5"><a href="">Eggplant Justice</a></td>
+                    <td class="s5"><a href="">Eggplant Wave</a></td>
+                    <td class="s5"><a href="">WHITE SPACE</a></td>
+                    <td class="s6"><a href="">HYPER MAGIC BEAM</a></td>
+                    <td class="s6"><a href="">Cosmic Rush</a></td>
+                </tr>
+                <tr>
+                    <td class="s6"><a href="">Boron</a></td>
+                    <td class="s6"><a href="">Impulse Rebirth</a></td>
+                    <td class="s6"><a href="">Project Omega</a></td>
+                    <td class="s6"><a href="">Afterplant</a></td>
+                    <td class="s6"><a href="">Eggplant Bypass</a></td>
+                </tr>
+                <tr>
+                    <td class="s6"><a href="">Unholy Alliance</a></td>
+                    <td class="s6"><a href="">expurgation</a></td>
+                    <td class="s6"><a href="">Fresh Fruit Festival</a></td>
+                    <td class="s6"><a href="">Lithium</a></td>
+                    <td class="s6"><a href="">Helium</a></td>
+                </tr>
+                <tr>
+                    <td class="s6"><a href="">Hydrogen</a></td>
+                    <td class="s6"><a href="">T Pose Machine</a></td>
+                    <td class="s6"><a href="">Wicked Lag Spike</a></td>
+                    <td class="s6"><a href="">ICDX Rebirth</a></td>
+                    <td class="s6"><a href="">Duocore</a></td>
+                </tr>
+                <tr>
+                    <td class="s6"><a href="">Argon Charge</a></td>
+                    <td class="s6"><a href="">Voirie</a></td>
+                    <td class="s6"><a href="">Antivirus</a></td>
+                    <td class="s6"><a href="">Eledophia</a></td>
+                    <td class="s6"><a href="">The Selket</a></td>
+                </tr>
+                <tr>
+                    <td class="s6"><a href="">Crumpled Sounds</a></td>
+                    <td class="s6"><a href="">Subplant</a></td>
+                    <td class="s6"><a href="">Eggplant Ascent</a></td>
+                    <td class="s6"><a href="">Eggplant Vortex</a></td>
+                    <td class="s6"><a href="">Eggplant Dive</a></td>
+                </tr>
+                <tr>
+                    <td class="s6"><a href="">Eggplant Planet</a></td>
+                    <td class="s6"><a href="">WhaTt</a></td>
+                    <td class="s7"><a href="">CulminatinG</a></td>
+                    <td class="s7"><a href="">Phobros</a></td>
+                    <td class="s7"><a href="">Duelo Circulos</a></td>
+                </tr>
+                <tr>
+                    <td class="s0" colspan="5"><b><a href="#legacy-list">Legacy List</a></b></td>
+                </tr>
+                <tr>
+                    <td class="s7"><a href="">Eggplant Clutter</a></td>
+                    <td class="s7"><a href="">Twister Circles</td>
+                    <td class="s7"><a href="">Albus</a></td>
+                    <td class="s7"><a href="">Imperial Force</td>
+                    <td class="s7"><a href="">Azure Spectrum</a></td>
+                </tr>
+                <tr>
+                    <td class="s7"><a href="">Foie</a></td>
+                    <td class="s7"><a href="">Reverie</td>
+                    <td class="s7"><a href="">Replete</a></td>
+                    <td class="s7"><a href="">augi level</td>
+                    <td class="s8"><a href="">Curse of <br> the Nile !</a></td>
+                </tr>
+                <tr>
+                    <td class="s8"><a href="">A Divine Christmas</td>
+                    <td class="s8"><a href="">Divine Mishaps</a></td>
+                    <td class="s8"><a href="">Eggplant Overnight</td>
+                    <td class="s8"><a href="">Nep World Rebirth</a></td>
+                    <td class="s8"><a href="">Eggplanto</a></td>
+                </tr>
+                <tr>
+                    <td class="s8"><a href="">The Mine</td>
+                    <td class="s8"><a href="">Eggplant in the 90s</a></td>
+                    <td class="s8"><a href="">Sakupen Eggplant</td>
+                </tr>
+            </table>
+        </div>
+
+        <br><br>
+
+        <!-- Data for big table of levels and scores :D -->
+        <div id="data" onclick="toggleOff()">
+            <table>
+
+                <tr>
+                    <th id="main-list"></th>
+                    <th class="s0 names" id="p-jinobeats">JinoBeats</th>
+                    <th class="s0 names" id="p-boomblox">BoomBlox</th>
+                    <th class="s0 names" id="p-zivy">Zivy</th>
+                    <th class="s0 names" id="p-zephyrora">Zephyrora</th>
+                    <th class="s0 names" id="p-pime2005">pime2005</th>
+                    <th class="s0 names" id="p-twister">Twister</th>
+                    <th class="s0 names comment" id="p-extrav" onmousemove="showComment(0, 0)">Extrav</th>
+                    <th class="s0 names comment" id="p-leapin" onmousemove="showComment(1, 1)">leapin</th>
+                    <th class="s0 names" id="p-aero">aero</th>
+                    <th id="avg">Average</th>
+                </tr>
+                <!-- Super Sandcastle -->
+                <section id="s1-ss">
+                    <tr id="super-sandcastle">
+                        <th class="s1 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="s0 p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                </section>
+                <!-- Vegetable Oil to FusionDynamix -->
+                <section id="s2-vo">
+                    <tr id="vegetable-oil">
+                        <th class="s2 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="s0 p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="xronier">
+                        <th class="s2 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="s0 p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(2, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr> 
+                    <tr id="supreme-demon-mix">
+                        <th class="s2"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="s0 p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr> 
+                    <tr id="fusiondynamix">
+                        <th class="s2 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="s0 p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>                    
+                </section>
+                <!-- Prisma to Polyatomic -->
+                <section id="s3-p">
+                    <tr id="prisma">
+                        <th class="s3"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>   
+                    <tr id="lockout">
+                        <th class="s3 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(3, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="cryothorn-hell">
+                        <th class="s3"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="turbulent-valley">
+                        <th class="s3 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(4, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="polyatomic">
+                        <th class="s3"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                </section>
+                <!-- Vacancy to Precipitance -->
+                <section id="s4-v">
+                    <tr id="vacancy">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(5, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="plant-wave-infinity">
+                        <th class="s4 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(6, 0)"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(7, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="interstellar">
+                        <th class="s4 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(8, 0)"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(9, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="hypothermia">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score bolded"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="motorbreath">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="grizzlyware">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="malevolent">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(10, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="manic-machine">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="warning">
+                        <th class="s4 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="neon-mixtape-tour">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(11, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="zen-blast">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="painful-playland">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="quadratic-function">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="rippling-memories">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="swagsonic">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="revitalize">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score bolded"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="midnight-march">
+                        <th class="s4 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score bolded"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(12, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="the-solar-wind">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score bolded"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="trobos">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplantlust">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="dreamfully">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(13, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="supreme">
+                            <th class="s4"><a href="" target="_blank"></a></th>
+
+                            <td class="p-jinobeats-score"></td>
+                            <td class="p-boomblox-score"></td>
+                            <td class="p-zivy-score"></td>
+                            <td class="p-zephyrora-score"></td>
+                            <td class="p-pime2005-score"></td>
+                            <td class="p-twister-score"></td>
+                            <td class="p-extrav-score"></td>
+                            <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                        </tr>
+                    <tr id="mobl-iii">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(14, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="mobl-ii">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="liam-tripple-redux">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="mobl">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="precipitance">
+                        <th class="s4"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score bolded"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                </section>
+                <!-- Critical Error II to Fractal Reality -->
+                <section id="s5-pt1-ceii">
+                    <tr id="critical-error-ii">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(15, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(16, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="discoloured-praise">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(17, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="sheol-death">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(18, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplant-ideology">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(19, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>               
+                    <tr id="ymthlyfymbikwhrlyf">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(20, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>               
+                    <tr id="betrayal-of-fortuity">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="corrode">
+                        <th class="s5 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="demon-collection">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="quantum-map">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="just-a-dream">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(21, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="cyclotron">
+                        <th class="s5 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(22, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score bolded"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="dark-realm">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(23, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="fractal-reality">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                </section>              
+                
+                <th class="s0" id="extended-list" colspan="11">Extended List</th>
+                <!-- Cerulean Shimmer to WHITE SPACE -->
+                <section id="s5-pt2-cs">
+                    <tr id="cerulean-shimmer">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="the-truth">
+                        <th class="s5 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(24, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="power-hour">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="sodium">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="supremacy">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplantos">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="fluorine">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="neon">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="nitrogen">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="oxygen">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplant-corridor">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>                
+                    <tr id="beryllium">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score bolded"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="fermion">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="carbon">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score bolded"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="inevitable-violence">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>                
+                    <tr id="eggplant-of-justice">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>        
+                    <tr id="eggplant-wave">
+                        <th class="s5"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(25, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="white-space">
+                        <th class="s5 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>                              
+                </section>
+                <!-- HYPER MAGIC BEAM to WhaTt -->
+                <section id="s6-hmb">
+                    <tr id="hyper-magic-beam">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="cosmic-rush">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="boron">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score bolded"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="impulse-rebirth">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="project-omega">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="afterplant">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(26, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplant-bypass">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(27, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="unholy-alliance">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score comment" onmousemove="showComment(28, 1)"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="expurgation">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score bolded"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="fresh-fruit-festival">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment" onmousemove="showComment(29, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="lithium">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score bolded"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="helium">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score bolded"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="hydrogen">
+                        <th class="s6 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score bolded"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="t-pose-machine">
+                        <th class="s6 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(30, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="wicked-lag-spike">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="icdx-rebirth">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="duocore">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="argon-charge">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="voirie">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="antivirus">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eledophia">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="the-selket">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="crumpled-sounds">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score bolded"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="subplant">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplant-ascent">
+                        <th class="s6 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment" onmousemove="showComment(31, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplant-vortex">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplant-dive">
+                        <th class="s6 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplant-planet">
+                        <th class="s6 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="whatt">
+                        <th class="s6"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                </section>
+                <!-- Culminating to Duelo Circulos -->
+                <section id="s7-pt1-c">
+                    <tr id="culminating">
+                        <th class="s7"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="phobros">
+                        <th class="s7 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(32, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment" onmousemove="showComment(33, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="duelo-circulos">
+                        <th class="s7"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                </section>
+                
+                <th class="s0" id="legacy-list" colspan="11">Legacy List</th>  
+                <!-- Eggplant Clutter to augi level -->
+                <section id="s7-pt2-ec">
+                    <tr id="eggplant-clutter">
+                        <th class="s7"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="twister-circles">
+                        <th class="s7"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="albus">
+                        <th class="s7"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="imperial-force">
+                        <th class="s7 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="azure-spectrum">
+                        <th class="s7"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="foie">
+                        <th class="s7 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="reverie">
+                        <th class="s7"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="replete">
+                        <th class="s7"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="augi-level">
+                        <th class="s7"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                </section>
+                <!-- Curse of the Nile ! to Sakupen Eggplant -->
+                <section id="s9-cotn">
+                    <tr id="curse-of-the-nile-!">
+                        <th class="s8 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score comment" onmousemove="showComment(34, 2)"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="a-divine-christmas">
+                        <th class="s8"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="divine-mishaps">
+                        <th class="s8"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplant-overnight">
+                        <th class="s8"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="nep-world-rebirth">
+                        <th class="s8"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplanto">
+                        <th class="s8"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="the-mine">
+                        <th class="s8 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="eggplant-in-the-90s">
+                        <th class="s8"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="sakupen-eggplant">
+                        <th class="s8"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score comment bolded" onmousemove="showComment(35, 0)"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                </section>
+
+                <!-- Maybe? Upcoming levels:
+                    <tr id="nemesis">
+                        <th class="s1 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="xeroa">
+                        <th class="s1 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    <tr id="sabishii">
+                        <th class="s1-s2 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                    (Malevolent Buffdate s2)
+                    <tr id="the-eggplantgatasu">
+                        <th class="s3 highest"><a href="" target="_blank"></a></th>
+
+                        <td class="p-jinobeats-score"></td>
+                        <td class="p-boomblox-score"></td>
+                        <td class="p-zivy-score"></td>
+                        <td class="p-zephyrora-score"></td>
+                        <td class="p-pime2005-score"></td>
+                        <td class="p-twister-score"></td>
+                        <td class="p-extrav-score"></td>
+                        <td class="p-leapin-score"></td>
+                        <td class="p-aero-score"></td>
+                        <td class="s0 average-score"></td>
+                    </tr>
+                -->
+            </table>
+        </div>
+
+        <h6 onclick="toggleOff()">Unfortunately I can't make this a collaborative project that can be updated by you guys directly, but I will be making an effort to keep this up-to-date with the real spreadsheet!</h6>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
