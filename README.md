@@ -1,0 +1,3 @@
+This was originally a personal project for my eyes only to see how well I could take pre-existing data and make it look kinda cool. Scope creep turned it into a higher stylized table with functions that *actually* copy the original spreadsheet's ability to calculate averages, the lowest/highest scores of each row, colour-coding based on certain rank numbers and more :')
+
+So unfortunately I gotta update this manually whenever the original spreadsheet does (which includes any new scores, comments, columns and rows that could potentially break my already unoptimized code </3) so please be patient with me!! I am an amateur programmer who had to look up a LOT of the html/css/js here lol
