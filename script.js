@@ -5,6 +5,8 @@ console.log("%cNo wait, I can make it fancier but it'll ruin the haha funny 'con
 console.log("%c<false;IDENTITY>\n%cconsole.log(\"%c fragments %c\");", "background: rgba(19, 125, 255, 0.24); color: white; font-size: 20px", "background: rgba(0, 115, 255, 0.1)", "color: rgb(162, 204, 254)", "background: rgba(0, 115, 255, 0.1)");
 console.log("ok fr go to Sources (next to Console) > buddies-demon-list-ranking > script.js and look at the top you'll see it");
 
+console.log("see i told you i still use it to test console outputs to this day");
+
 
 // For every update: 
 // 1. Add level identifiers + spacing
