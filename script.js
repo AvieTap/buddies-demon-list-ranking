@@ -3,7 +3,7 @@ console.log("fragments");
 
 console.log("%cNo wait, I can make it fancier but it'll ruin the haha funny 'console.log(\"fragments\")' joke- ah screw it", "color: rgb(150, 150, 150);", );
 console.log("%c<false;IDENTITY>\n%cconsole.log(\"%c fragments %c\");", "background: rgba(19, 125, 255, 0.24); color: white; font-size: 20px", "background: rgba(0, 115, 255, 0.1)", "color: rgb(162, 204, 254)", "background: rgba(0, 115, 255, 0.1)");
-console.log("ok fr go to Sources (next to Console) > v1.1 > script.js and look at the top you'll see it");
+console.log("ok fr go to Sources (next to Console) > buddies-demon-list-ranking > script.js and look at the top you'll see it");
 
 
 // For every update: 
